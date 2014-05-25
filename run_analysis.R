@@ -1,3 +1,22 @@
+# WARNING: You should have download this "run_analyis.R" file in your working directory, where your "UCI HAR Dataset" directory have been downloaded and unzipped previously. Make sure that your R working directory is set to the folder that you placed & unziped the UCI HAR Dataset file & placed the run_analysis.R file. This can be done with the R command, setwd(). Do not change the location and name of the files ("UCI HAR Dataset" and "run_analysis.R"). You should have install and load a specific package called "stats".
+
+# Remark 1: You should have downloaded the UCI HAR Dataset at this Web link : https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+# Remark 2: You should have unziped the UCI HAR Dataset and placed it in your working directory
+
+# Remark 3: You should have downloaded the run_analysis.R file from my github account
+
+# Remark 4: You should have placed the run_analysis.R file in your working directory
+
+# Remark 5: At each step when producing and modifying a data frame, you should investigate the "subject_activity_feature_data" data frame before with head(), tail(), summary() and str() commands. It is particularly useful for the last step 6.
+
+# Remark 6: The program would ask you at step 1 to choose your CRAN mirror to download the stats package. You have to select it and press OK. Be aware that stats package is not available for R version 3.0.2
+
+# Step 1. install and load "stats" library package
+
+install.packages("stats")
+library(stats)
+
 # Step 2. Merges the training and the test sets to create one data set.
 
 # Read and merges the "X_train.txt" and "X_test.text" data files
@@ -24,13 +43,13 @@ features_data <- read.table("UCI HAR Dataset/features.txt")
 mean_std_features <- grep("-mean\\(\\)|-std\\(\\)",features_data[,2])
 
 # Strip out mean and standard deviation features
-x_data2 <- x_data[,mean_std_features]
+x_data <- x_data[,mean_std_features]
 
 # Make all the names in lower case, from the meand and standard deviation features
-names(x_data2) <- tolower(features_data[mean_std_features, 2])
+names(x_data) <- tolower(features_data[mean_std_features, 2])
 
 # Strip out the features in paranthesis and remove the parenthesis with a gsub command
-names(x_data2) <- gsub("\\(|\\)","",names(x_data2))
+names(x_data) <- gsub("\\(|\\)","",names(x_data))
 
 # Step 4. Uses descriptive activity names to name the activities in the data set.
 
@@ -52,26 +71,17 @@ y_activity_data[,1] = activity[y_activity_data[,1],2]
 names(subject_data) <- "subject"
 
 # Merges the "subject_data", the "y_activity_data" and the "x_data" files
-tidy_data <- cbind(subject_data, y_activity_data, x_data2)
+tidy_data <- cbind(subject_data, y_activity_data, x_data)
 
 # Write the "tidy_data table" data frame in a "merged_tidy_mean_std_data.txt" file in your working directory
-write.table(tidy_data, "merged_tidy_mean_std_data.txt", row.names=FALSE)
+write.table(tidy_data, "merged_tidy_mean_std_data_bis.txt", row.names=FALSE)
 
 # Step 6. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-# Create a copy of originla x_data data frame to work on this second data frame to produce the desired data frame
-x_data3 <- x_data
+# Create a copy of final "tidy_data" data frame to produce the desired data frame
+tidy_data3 <- tidy_data
 
-# Make all the names of the features in lower case in the x_data3 file
-names(x_data3) <- tolower(features_data[, 2])
-
-# Strip out the features in paranthesis and remove the parenthesis with a gsub command
-names(x_data3) <- gsub("\\(|\\)","",names(x_data3))
-
-# Merges the "subject_data", the "y_activity_data" and the "x_data" files to create a new "tidy_data3" data	frame with all features
-tidy_data3 <- cbind(subject_data, y_activity_data, x_data3)
-
-# Combine the "subject_data" with the activities extract from the "tidy_data3" table to product a "subject_activity_data" data frame
+# Combine the "subject_data" with the activities extract from the "tidy_data3" table to produce a "subject_activity_data" data frame
 subject_activity_data <- cbind(subject_data, tidy_data3$activity)
 
 # Name the subjects and activity names in the data frame
@@ -82,10 +92,10 @@ subject_activity_feature_data <- cbind(subject_activity_data, tidy_data3)
 
 # Compute a "tidy_mean_data" data frame from the "subject_activity_feature_data" data frame produced for analysis, compute and report means of all measures, grouped by subject_id and by activity with an aggregate command.
 # NOTA : you should investigate the "subject_activity_feature_data" data frame before with head(), tail(), summary() and str() commands
-tidy_mean_data <- aggregate(subject_activity_feature_data[,5:565], by = list(subject_activity_feature_data$subject.id, subject_activity_feature_data$activity), FUN = mean)
+tidy_mean_data <- aggregate(subject_activity_feature_data[,5:70], by = list(subject_activity_feature_data$subject.id, subject_activity_feature_data$activity), FUN = mean)
 
 # Write the appropriate columns names in the "tidy_mean_data" data frame
 colnames(tidy_mean_data)[1:2] <- c("subject.id", "activity")
 
 # Write the "tidy_mean_data" data frame in a "subject_activity_feature_mean_data.txt" in your working directory
-write.table(tidy_mean_data, file="subject_activity_feature_mean_data.txt", row.names = FALSE)
+write.table(tidy_mean_data, file="subject_activity_feature_mean_data_bis.txt", row.names = FALSE)
