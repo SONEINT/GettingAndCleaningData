@@ -42,5 +42,8 @@ Remark 6: You should have excecuted the program on your R environnment. The prog
 
 Step 2 :
 
-- Read and merges the "X_train.txt" and "X_test.text" data files
+* Read and merges the "X_train.txt" and create a 
+x_train_data data frame
+* Read the "X_test.text" data files and create a x_test_data data frame
+* Merge the x_train_data and the x_test_data frame to create a x_data data frame
 
