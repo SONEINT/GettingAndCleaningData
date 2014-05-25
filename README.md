@@ -25,7 +25,7 @@ You should create one R script called run_analysis.R that does the following:
 
 Good luck!
 
-## How to excecute the program
+## 2. How to excecute the program
 
 ### Introduction : 
 
@@ -51,7 +51,7 @@ The programm should produce two files in your working directory, called "merged_
 
 Read the instructions in "run_analysis.R" file and have a look to the CodeBook.md file for further instructions.
 
-### Conlusion: 
+## 3. Conlusion: 
 
 be advised that this method use in majority R base commands and only stats package. I have tested another method with data.table package which should be faster for higher calculations.
 
