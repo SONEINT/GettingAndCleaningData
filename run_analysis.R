@@ -1,6 +1,12 @@
-# WARNING: You should have download this "run_analyis.R" file in your working directory, where your "UCI HAR Dataset" directory have been downloaded and unzipped previously. Make sure that your R working directory is set to the folder that you placed & unziped the UCI HAR Dataset file & placed the run_analysis.R file. This can be done with the R command, setwd(). Do not change the location and name of the files ("UCI HAR Dataset" and "run_analysis.R"). You should have install and load a specific package called "stats".
+# WARNING: You should have download this "run_analyis.R" file in your working directory, 
+# where your "UCI HAR Dataset" directory have been downloaded and unzipped previously. 
+# Make sure that your R working directory is set to the folder that you placed & unziped the UCI HAR Dataset file
+# & placed the run_analysis.R file. This can be done with the R command, setwd(). 
+# Do not change the location and name of the files ("UCI HAR Dataset" and "run_analysis.R"). 
+# You should have install and load a specific package called "stats".
 
-# Remark 1: You should have downloaded the UCI HAR Dataset at this Web link : https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+# Remark 1: You should have downloaded the UCI HAR Dataset at this Web link : 
+# https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 # Remark 2: You should have unziped the UCI HAR Dataset and placed it in your working directory
 
@@ -8,9 +14,11 @@
 
 # Remark 4: You should have placed the run_analysis.R file in your working directory
 
-# Remark 5: At each step when producing and modifying a data frame, you should investigate the "subject_activity_feature_data" data frame before with head(), tail(), summary() and str() commands. It is particularly useful for the last step 6.
+# Remark 5: At each step when producing and modifying a data frame, you should investigate 
+# the "subject_activity_feature_data" data frame before with head(), tail(), summary() and str() commands. It is particularly useful for the last step 6.
 
-# Remark 6: The program would ask you at step 1 to choose your CRAN mirror to download the stats package. You have to select it and press OK. Be aware that stats package is not available for R version 3.0.2
+# Remark 6: The program would ask you at step 1 to choose your CRAN mirror to download the stats package. 
+# You have to select it and press OK. Be aware that stats package is not available for R version 3.0.2
 
 # Step 1. install and load "stats" library package
 
@@ -81,7 +89,8 @@ write.table(tidy_data, "merged_tidy_mean_std_data_bis.txt", row.names=FALSE)
 # Create a copy of final "tidy_data" data frame to produce the desired data frame
 tidy_data3 <- tidy_data
 
-# Combine the "subject_data" with the activities extract from the "tidy_data3" table to produce a "subject_activity_data" data frame
+# Combine the "subject_data" with the activities extract from the "tidy_data3" table to produce 
+# a "subject_activity_data" data frame
 subject_activity_data <- cbind(subject_data, tidy_data3$activity)
 
 # Name the subjects and activity names in the data frame
@@ -90,8 +99,10 @@ colnames(subject_activity_data) <- c("subject.id", "activity")
 # Combine with all the features to produce desired data frame
 subject_activity_feature_data <- cbind(subject_activity_data, tidy_data3)
 
-# Compute a "tidy_mean_data" data frame from the "subject_activity_feature_data" data frame produced for analysis, compute and report means of all measures, grouped by subject_id and by activity with an aggregate command.
-# NOTA : you should investigate the "subject_activity_feature_data" data frame before with head(), tail(), summary() and str() commands
+# Compute a "tidy_mean_data" data frame from the "subject_activity_feature_data" data frame produced for analysis, 
+# compute and report means of all measures, grouped by subject_id and by activity with an aggregate command.
+# NOTA : you should investigate the "subject_activity_feature_data" data frame before with head(), tail(), 
+# summary() and str() commands
 tidy_mean_data <- aggregate(subject_activity_feature_data[,5:70], by = list(subject_activity_feature_data$subject.id, subject_activity_feature_data$activity), FUN = mean)
 
 # Write the appropriate columns names in the "tidy_mean_data" data frame
