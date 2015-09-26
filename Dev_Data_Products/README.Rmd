@@ -1,0 +1,29 @@
+DATA SCIENCE SPECIALIZATION COURSE - DEVELOPING DATA PRODUCTS - COURSE PROJECT 2
+==================================================================================
+Coursera - Developing Data Products
+
+![Developing Data Products](https://github.com/SONEINT/Dev_Data_Products/Pictures/DevelopingDataProducts.jpg)
+
+PART I : IMPORTANT INSTRUCTIONS
+--------------------------------------------------------
+
+### Description of the Github repository
+
+You would find:
+
+* A README RMD file for general instructions anf Developing Data Products course 
+project general instructions
+* A DATA SET folder with the R data set used for the TermClust Shiny application
+* ui.R and server.R files for the Shiny application
+* word.clust.R file mandatory for the Shiny application (interactive computations 
+for hierarchical clustering)
+
+
+PART II: RESOURCES
+--------------------------------------------------------
+
+1. [Developing Data Products course at @Coursera](https://www.coursera.org/course/devdataprod)
+
+2. [TermClust Shiny application](https://soneint.shinyapps.io/AppCoursera)
+
+3. [TermClust Slidify presentation]
