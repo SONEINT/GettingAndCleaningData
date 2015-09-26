@@ -2,8 +2,6 @@ DATA SCIENCE SPECIALIZATION COURSE - DEVELOPING DATA PRODUCTS - COURSE PROJECT 2
 ==================================================================================
 Coursera - Developing Data Products
 
-![Developing Data Products](https://github.com/SONEINT/Dev_Data_Products/Pictures/DevelopingDataProducts.jpg)
-
 PART I : IMPORTANT INSTRUCTIONS
 --------------------------------------------------------
 
@@ -18,8 +16,26 @@ project general instructions
 * word.clust.R file mandatory for the Shiny application (interactive computations 
 for hierarchical clustering)
 
+PART II: GENERAL INSTRUCTIONS
+--------------------------------------------------------
 
-PART II: RESOURCES
+The application is a Tweet text Term Hierarchical Clustering application to help me to find quicky patterns and trends in Tweet data sets for my PhD research. I found interesting to build an application to do that easily and with a bit interactivity !
+
+A simple application called TermClust has been developed and deployed at the Web link [TermClust Shiny application](https://soneint.shinyapps.io/AppCoursera) which allow you to observe the hierarchical clustering tree with clusters in clust tabset and to look at the term frequency file as a text file in file tabset.
+
+You can adjust the results with :
+
+RADIO BUTTON: hierarchical cluster analysis agglomeration method from "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
+
+SLIDER 1 : Cut the dendogram in k clusters (be sure k >= h )
+
+SLIDER 2 : Cut the dendogram in height h ( be sure h <= k)
+
+SLIDER 3 : Remove sparse terms with decreasing sparsity level (move slowly to observe a few terms in the tree)
+
+Let's play now :-)
+
+PART III: RESOURCES
 --------------------------------------------------------
 
 1. [Developing Data Products course at @Coursera](https://www.coursera.org/course/devdataprod)
