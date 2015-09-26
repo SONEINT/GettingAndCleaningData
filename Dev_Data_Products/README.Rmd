@@ -42,4 +42,4 @@ PART III: RESOURCES
 
 2. [TermClust Shiny application](https://soneint.shinyapps.io/AppCoursera)
 
-3. [TermClust Slidify presentation]
+3. [TermClust Slidify presentation](http://rpubs.com/SONEINT/TermClust)
